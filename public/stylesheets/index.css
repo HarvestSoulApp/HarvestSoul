@@ -1,0 +1,78 @@
+body, html{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    color: #000;
+    text-align: center;
+  }
+  
+  a{
+    color: #FFF5EE;
+    text-decoration: none;
+  }
+  
+  a:hover{
+    opacity: 0.8;
+  }
+  
+  .index-nav{
+    background-color: #000;
+    padding: 0 2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100vw;
+  }
+  
+  .brand{
+    color: #FFF5EE;
+    font-size: 2vw;
+  }
+  
+  .log-in{
+    font-size: 1vw;
+    background-color: green;
+    border-radius: 10%;
+    padding: 0.2vw 1vw;
+  }
+  
+  .cta-signup{
+    background-color: yellow;
+    color: black;
+    font-size: 2vw;
+  }
+  
+  #landing-page{
+    background-image: url('/images/landing-page.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+   background-position: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  
+  .cta-heading{
+    text-align: center;
+    color: #000;
+    margin-top: 10vw;
+    font-size: 2vw;
+    width: 80vw;
+  }
+  
+  .cta-signup{
+    background-color: #FFF5EE;
+    color: #000;
+    border-radius: 10%;
+    border: 1px solid #000;
+  }
+  
+  .landing-page-footer{
+    margin-bottom: 100vw;
+    margin-left: 10vw;
+    font-size: 1vw;
+    font-weight:800;
+  }

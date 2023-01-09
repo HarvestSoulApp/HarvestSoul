@@ -1,4 +1,4 @@
-{{>nav}}
+
 <h1>{{username}}</h1>
 
 <form action="/profile/{{_id}}/edit" method="POST">
@@ -28,7 +28,7 @@
     <option value="cancer">Cancer</option>
 </select>
 
-<button type="submit">Edit Profile</button>
+<button type="submit">Save Changes</button>
 </form>
 
 <form action="/profile/{{_id}}/delete" method="POST">
