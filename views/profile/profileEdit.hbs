@@ -1,0 +1,42 @@
+{{>nav}}
+<h1>{{username}}</h1>
+
+<form action="/profile/{{_id}}/edit" method="POST">
+<input type="text" name="firstName" placeholder="First Name" value="{{firstName}}">
+<input type="text" name="lastName" placeholder ="Last Name" value="{{lastName}}">
+<select name ="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="trans-male">Trans Male</option>
+    <option value="trans-female">Trans Female</option>
+    <option value="gender-fluid">Gender Fluid</option>
+    <option value="non-binary">Non-binary</option>
+</select>
+<input type="date" name="dob" />
+<select name="starSign">
+    <option value="capricorn">Capricorn</option>
+    <option value="libra">Libra</option>
+    <option value="sagitarius">Saggitarius</option>
+    <option value="taurus">Taurus</option>
+    <option value="virgo">Virgo</option>
+    <option value="leo">Leo</option>
+    <option value="pisces">Pisces</option>
+    <option value="aquarius">Aquarius</option>
+    <option value="scorpio">Scorpio</option>
+    <option value="aries">Aries</option>
+    <option value="gemini">Gemini</option>
+    <option value="cancer">Cancer</option>
+</select>
+
+<button type="submit">Edit Profile</button>
+</form>
+
+<form action="/profile/{{_id}}/delete" method="POST">
+<button type="submit">Delete Profile</button>
+</form>
+
+<form action="/event/eventCreate" method="GET">
+<button type="submit">Create Event</button>
+</form>
+
+
