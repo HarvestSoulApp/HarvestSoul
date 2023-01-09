@@ -1,17 +1,19 @@
 const express = require('express');
 const Event = require('../models/Event.model');
+const User = require('../models/User.model');
 const router = express.Router();
 
 router.get("/",(req,res,next) => {
     res.send("hello")
-});
+})
 
 router.get('/find', (req, res, next) => {
     Event.find()
         .then((events) => {
             res.render('event/events', { events})
     })
-})
+});
+
 
 
 router.get('/eventCreate', (req, res, next) => {
@@ -50,21 +52,34 @@ router.get("/:id/edit", (req, res) => {
 
 
 router.get('/:eventId', (req, res, next) => {
+const {currentUser} = req.session;
+const currentUserId = currentUser._id;
     const eventId = req.params.eventId;
     Event.findById(eventId)
         .then((event) => {
-            const  {date, description, location, _id} = event
-        res.render('event/event', {date, description, location, _id})
-    })
+            //we need to take the interested array and get all names of interested users by their Id
+            const  {date, description, location, _id, interested} = event
+            User.find({_id:{$in:interested}}).then((users) => {
+                const usernames = users.map(user => user.username)
+                res.render('event/event', {date, description, location, _id, currentUserId, usernames})
+            })
+        })
     
 })
-
 
 router.post('/:eventId/delete', (req, res, next) => {
     const eventId = req.params.eventId
     Event.findByIdAndDelete(eventId)
         .then(() => { res.redirect('/event/eventCreate') })
     
+});
+
+//adds loged in user id to the interested property of respective event if unique
+router.post('/:eventId/subscribeUser/:userId', (req, res, next) => {
+    const eventId = req.params.eventId
+    const userId = req.params.userId
+    Event.findByIdAndUpdate(eventId, {$addToSet:{interested:userId}})
+    .then(() => { res.redirect(`/event/${eventId}`)})
 });
 
 module.exports = router;

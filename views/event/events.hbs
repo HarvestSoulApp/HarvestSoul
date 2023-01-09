@@ -1,3 +1,9 @@
+<ul>
 {{#each events}}
-{{this.description}}
+<li>
+    {{this.description}} at {{this.location}} on {{this.date}} <a href="/event/{{this._id}}">View Event</a>
+</li>
 {{/each}}
+</ul>
+
+

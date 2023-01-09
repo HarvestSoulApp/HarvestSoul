@@ -1,9 +1,12 @@
-{{date}}{{description}}{{location}}
+<p>{{date}}{{description}}{{location}}</p>
+<p>Attendees: {{#each usernames}}{{this}} {{/each}}</p>
+
 <form action="/event/{{_id}}/delete" method="POST">
-<button type="submit">delete event</button>
+<button type="submit">Delete event</button>
 </form>
 
 <a href="/event/{{_id}}/edit">Edit event</a>
 
 
-
+<form method="POST" action="/event/{{_id}}/subscribeUser/{{currentUserId}}">
+<button>Join event</button></form>
