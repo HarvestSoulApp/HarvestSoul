@@ -1,9 +1,19 @@
-<ul>
+<div class="container-fluid events">
+    <div class="row">
 {{#each events}}
-<li>
-    {{this.description}} at {{this.location}} on {{this.date}} <a href="/event/{{this._id}}">View Event</a>
-</li>
+        <div class="col-12 col-md-3 card">
+            <div class="card product">
+                <div class="card-body">
+                    <h1 class="card-title">{{this.description}}</h1>
+                    <h1 class="card-body">{{this.location}}</h1>
+                    <h1>{{this.date}}</h1>
+                    <a href="/event/{{this._id}}">View Event</a>
+                </div>
+            </div>
+        </div>
 {{/each}}
-</ul>
+    </div>
+</div>
+
 
 

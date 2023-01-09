@@ -1,13 +1,6 @@
-body, html{
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    color: #000;
-    text-align: center;
-  }
-  
+
   a{
-    color: blue;
+    color: #FFF5EE;
     text-decoration: none;
   }
   
@@ -17,7 +10,7 @@ body, html{
   
   .index-nav{
     background-color: #000;
-    padding: 0 2vw;
+    padding: 1vw;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -26,28 +19,26 @@ body, html{
   
   .brand{
     color: #FFF5EE;
-    font-size: 2vw;
+    font-size: 3vw;
   }
   
   .log-in{
-    font-size: 1vw;
+    font-size: 2.5vw;
     background-color: green;
     border-radius: 10%;
-    padding: 0.2vw 1vw;
+    padding: 0.1vw 1vw;
   }
-  
-  .cta-signup{
-    background-color: yellow;
-    color: black;
-    font-size: 2vw;
+
+  .cta{
+    margin-bottom: 25vw;
   }
-  
+
   #landing-page{
     background-image: url('/images/landing-page.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-   background-position: center;
-    width: 100vw;
+    background-position: center;
+    width: 130vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -56,23 +47,66 @@ body, html{
   
   
   .cta-heading{
-    text-align: center;
+    text-align: left;
     color: #000;
-    margin-top: 10vw;
-    font-size: 2vw;
-    width: 80vw;
+    margin-top: 3.5vw;
+    margin-left: 5vw;
+    font-size: 4vw;
+    opacity: 0.7;
+    width: 50vw;
   }
   
   .cta-signup{
     background-color: #FFF5EE;
     color: #000;
-    border-radius: 10%;
-    border: 1px solid #000;
+    font-size: 2vw;
+    padding:0.2vw;
+    margin-top: 1.5vw;
+    border-radius: 15vw;
+    margin-left: 5vw;
   }
   
   .landing-page-footer{
-    margin-bottom: 100vw;
+    color: #FFF;
     margin-left: 10vw;
-    font-size: 1vw;
+    font-size: 1.2vw;
     font-weight:800;
+    position: relative;
+    top: -14vw;
   }
+
+  .created-by{
+    background-color: gray;
+    border-radius: 24vw;
+    opacity: 0.65;
+    padding: 1vw;
+    position: relative; 
+    left: -4vw;
+    font-size:1vw;
+
+  }
+
+ @media (max-width: 650px) {
+
+  .brand {
+    font-size: 4vw;
+  }
+
+.log-in{
+  font-size:3.5vw;
+}
+
+  .cta-heading {
+   width: 55vw;
+   font-size: 6vw;
+   margin-top: -45vw;
+  }
+
+  .cta-signup{
+    font-size: 4vw;
+  }
+  .created-by{
+    font-size: 1.5vw;
+    left: -5vw;
+  }
+}

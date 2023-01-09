@@ -1,4 +1,16 @@
+<div class="container-fluid events">
+    <div class="row">
 {{#each users}}
-{{this.username}}
-<a href="/profile/{{this._id}}">See profile</a>
+        <div class="col-12 col-md-3 card">
+            <div class="card product">
+                <div class="card-body">
+                   <h1 class="card-title">{{this.username}}</h1>
+                   <a class="card-body" href="/profile/{{this._id}}">See profile</a>
+                </div>
+            </div>
+        </div>
 {{/each}}
+    </div>
+</div>
+
+
