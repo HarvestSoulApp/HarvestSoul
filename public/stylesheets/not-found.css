@@ -1,0 +1,31 @@
+#not-found{
+    background-image: url('/images/not-found.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found-body {
+    width: 50vw;
+    text-align: center;
+    background-color: gray;
+    border-radius: 10vw;
+}
+
+
+.not-found-body a{
+    padding: 1vw;
+}
+
+.not-found-body a:hover{
+    opacity: 0.5;
+}
+
+.not-found-body >h1{
+    font-size: 5vw;
+}

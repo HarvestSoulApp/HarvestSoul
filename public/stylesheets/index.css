@@ -10,7 +10,7 @@
   
   .index-nav{
     background-color: #000;
-    padding: 1vw;
+    padding: 1vw 2vw;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -87,6 +87,7 @@
   }
 
  @media (max-width: 650px) {
+ 
 
   .brand {
     font-size: 4vw;

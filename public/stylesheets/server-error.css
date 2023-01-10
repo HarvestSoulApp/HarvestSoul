@@ -1,0 +1,33 @@
+#server-error{
+    background-image: url('/images/server-error.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.server-error-body {
+    width: 50vw;
+    text-align: center;
+    color: #FFF5EE;
+    background-color: gray;
+    opacity: 0.8;
+    border-radius: 2vw;
+    padding: 0.5vw;
+    position: relative;
+    left: 10vw;
+    font-size: 2.5vw;
+}
+
+
+.server-error-body a:hover{
+    opacity: 0.5;
+}
+
+.server-error-body >h1{
+    font-size: 5vw;
+}
