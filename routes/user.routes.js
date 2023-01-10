@@ -7,7 +7,7 @@ const router = express.Router();
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
-const isOwner = require("../middleware/isOwner");
+const isProfileOwner = require("../middleware/isProfileOwner");
 
 
 router.get('/find', (req, res, next) => {
@@ -25,7 +25,7 @@ router.get('/:id', (req, res, next) => {
  })  
 })
 
-router.get('/:id/edit', isOwner,  isLoggedIn,(req, res, next) => {
+router.get('/:id/edit', isProfileOwner,  isLoggedIn,(req, res, next) => {
     const userId = req.params.id
     User.findById(userId)
         .then((theUser) => {
@@ -33,7 +33,7 @@ router.get('/:id/edit', isOwner,  isLoggedIn,(req, res, next) => {
     })
 });
 
-router.post('/:id/edit', isOwner, isLoggedIn, (req, res, next) => {
+router.post('/:id/edit', isProfileOwner, isLoggedIn, (req, res, next) => {
     const userId = req.params.id;
     const { firstName, lastName, gender, dob, starSign, occupation, hobbies, lookingFor } = req.body;
     User.findByIdAndUpdate(userId, 
@@ -48,7 +48,7 @@ router.post('/:id/edit', isOwner, isLoggedIn, (req, res, next) => {
 
 
 
-router.post('/:id/delete', isOwner, isLoggedIn, (req, res, next) => {
+router.post('/:id/delete', isProfileOwner, isLoggedIn, (req, res, next) => {
     const userId =req.params.id
     User.findByIdAndDelete(userId)
         .then((deleted) => {

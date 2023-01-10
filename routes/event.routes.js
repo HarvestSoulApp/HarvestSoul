@@ -4,9 +4,13 @@ const User = require('../models/User.model');
 const router = express.Router();
 
 
+
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
+const isProfileOwner = require("../middleware/isProfileOwner");
+const isEventOrganizer = require('../middleware/isEventOrganizer');
+
 
 router.get('/find', isLoggedIn, (req, res, next) => {
     Event.find()
@@ -17,20 +21,22 @@ router.get('/find', isLoggedIn, (req, res, next) => {
 
 
 
-router.get('/eventCreate', isLoggedIn, (req, res, next) => {
+router.get('/eventCreate/:organizerId', isLoggedIn, (req, res, next) => {
+    console.log(req.session)
     res.render('event/eventCreate')
 })
 
-router.post('/eventCreate', isLoggedIn, (req, res, next) => {
+router.post('/eventCreate/:organizerId', isLoggedIn, (req, res, next) => {
     const { date, description, location } = req.body
-    Event.create({ date, description, location })
-        .then((event) => {
-            res.redirect(`/event/${event._id}`)
+    const organizerId = req.params.organizerId
+    Event.create({ date, description, location, organizerName: req.session.currentUser.username, organizer: req.session.currentUser._id })
+       .then((event) => {
+           res.redirect(`/event/${event._id}`)
     })
-});
+})
 
-
-router.post('/:id/eventUpdate', isLoggedIn, (req, res) => {
+   
+router.post('/:id/eventUpdate', isLoggedIn, isEventOrganizer, (req, res) => {
     const { date, description, location } = req.body
     const {id} = req.params
     Event.findByIdAndUpdate(id, {date, description, location})
@@ -39,18 +45,18 @@ router.post('/:id/eventUpdate', isLoggedIn, (req, res) => {
     })
 });
 
-router.get("/:id/edit", isLoggedIn, (req, res) => {
+router.get("/:id/edit", isLoggedIn, isEventOrganizer, (req, res) => {
     const {id} = req.params
+    // const organizerName = req.session.currentUser._id
     Event.findById(id)
     .then((event) => {
-        const {date, description, location, _id} = event
+        const {date, description, location, _id, organizerName } = event
         const calendarDate = date.toISOString().split('T')[0] //this formats the date object into string yyyy-mm-dd
-        res.render('event/eventEdit', {calendarDate, description, location, _id})
+        res.render('event/eventEdit', {calendarDate, description, location, _id, organizerName})
     });
 
 
 });
-
 
 router.get('/:eventId', isLoggedIn, (req, res, next) => {
 const {currentUser} = req.session;
@@ -68,7 +74,7 @@ const currentUserId = currentUser._id;
     
 })
 
-router.post('/:eventId/delete', isLoggedIn, (req, res, next) => {
+router.post('/:eventId/delete', isLoggedIn, isEventOrganizer, (req, res, next) => {
     const eventId = req.params.eventId
     Event.findByIdAndDelete(eventId)
         .then(() => { res.redirect('/event/eventCreate') })

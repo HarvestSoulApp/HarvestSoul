@@ -20,6 +20,7 @@
 
 <p>{{date}}{{description}}{{location}}</p>
 <p>Attendees: {{#each usernames}}{{this}} {{/each}}</p>
+<p>Organizer:{{organizerName}}</p>
 
 <form action="/event/{{_id}}/delete" method="POST">
 <button type="submit">Delete event</button>
