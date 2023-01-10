@@ -3,7 +3,10 @@ const { Schema, model } = require("mongoose");
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const eventSchema = new Schema(
   {
-    organizer: String,
+    organizer: {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    },
     date: Date,
     description: String,
     location: String,

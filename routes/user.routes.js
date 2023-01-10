@@ -3,6 +3,13 @@ const User = require('../models/User.model');
 const Event = require('../models/User.model');
 const router = express.Router();
 
+
+// Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
+const isLoggedOut = require("../middleware/isLoggedOut");
+const isLoggedIn = require("../middleware/isLoggedIn");
+const isOwner = require("../middleware/isOwner");
+
+
 router.get('/find', (req, res, next) => {
     User.find()
         .then((users) => {
@@ -11,14 +18,14 @@ router.get('/find', (req, res, next) => {
 })
 
 router.get('/:id', (req, res, next) => {
-    const userId = req.params._id;
+    const userId = req.params.id;
     User.findById(userId)  
         .then((user) => {
      res.render('profile/profile', user)
  })  
 })
 
-router.get('/:id/edit', (req, res, next) => {
+router.get('/:id/edit', isOwner,  isLoggedIn,(req, res, next) => {
     const userId = req.params.id
     User.findById(userId)
         .then((theUser) => {
@@ -26,7 +33,7 @@ router.get('/:id/edit', (req, res, next) => {
     })
 });
 
-router.post('/:id/edit', (req, res, next) => {
+router.post('/:id/edit', isOwner, isLoggedIn, (req, res, next) => {
     const userId = req.params.id;
     const { firstName, lastName, gender, dob, starSign, occupation, hobbies, lookingFor } = req.body;
     User.findByIdAndUpdate(userId, 
@@ -41,7 +48,7 @@ router.post('/:id/edit', (req, res, next) => {
 
 
 
-router.post('/:id/delete', (req, res, next) => {
+router.post('/:id/delete', isOwner, isLoggedIn, (req, res, next) => {
     const userId =req.params.id
     User.findByIdAndDelete(userId)
         .then((deleted) => {

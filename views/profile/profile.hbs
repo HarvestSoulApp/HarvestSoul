@@ -1,16 +1,32 @@
 
 <h1>Hello {{username}}</h1>
 
-<a href="/profile/{{_id}}/edit">edit profile</a>
 
-{{firstName}}
-{{lastName}}
-{{gender}}
-{{dob}}
-{{starSign}}
-{{lookingFor}}
-{{hobbies}}
-{{occupation}}
+
+
+
+
+<div class="container-fluid events">
+    <div class="row">
+        <div class="col-12 card">
+            <div class="card product">
+                <div class="card-body">
+                    <h1 class="card-title">Current Bio</h1>
+                    <h1 class="card-body">First Name:{{firstName}}</h1>
+                    <h1 class="card-body">Last Name:{{lastName}}</h1>
+                    <h1 class="card-body">Date of birth:{{dob}}</h1>
+                    <h1 class="card-body">Gender:{{gender}}</h1>
+                    <h1 class="card-body">Star Sign:{{starSign}}</h1>
+                    <h1 class="card-body">Hobbies:{{hobbies}}</h1>
+                    <h1 class="card-body">Occupation:{{occupation}}</h1>
+                    <h1 class="card-body">Looking for{{lookingFor}}</h1>
+                    <a href="/profile/{{_id}}/edit">edit profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <a href="/profile/find">see other users</a>

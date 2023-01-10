@@ -3,11 +3,12 @@ const Event = require('../models/Event.model');
 const User = require('../models/User.model');
 const router = express.Router();
 
-router.get("/",(req,res,next) => {
-    res.send("hello")
-})
 
-router.get('/find', (req, res, next) => {
+// Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
+const isLoggedOut = require("../middleware/isLoggedOut");
+const isLoggedIn = require("../middleware/isLoggedIn");
+
+router.get('/find', isLoggedIn, (req, res, next) => {
     Event.find()
         .then((events) => {
             res.render('event/events', { events})
@@ -16,11 +17,11 @@ router.get('/find', (req, res, next) => {
 
 
 
-router.get('/eventCreate', (req, res, next) => {
+router.get('/eventCreate', isLoggedIn, (req, res, next) => {
     res.render('event/eventCreate')
 })
 
-router.post('/eventCreate', (req, res, next) => {
+router.post('/eventCreate', isLoggedIn, (req, res, next) => {
     const { date, description, location } = req.body
     Event.create({ date, description, location })
         .then((event) => {
@@ -29,7 +30,7 @@ router.post('/eventCreate', (req, res, next) => {
 });
 
 
-router.post('/:id/eventUpdate', (req, res) => {
+router.post('/:id/eventUpdate', isLoggedIn, (req, res) => {
     const { date, description, location } = req.body
     const {id} = req.params
     Event.findByIdAndUpdate(id, {date, description, location})
@@ -38,7 +39,7 @@ router.post('/:id/eventUpdate', (req, res) => {
     })
 });
 
-router.get("/:id/edit", (req, res) => {
+router.get("/:id/edit", isLoggedIn, (req, res) => {
     const {id} = req.params
     Event.findById(id)
     .then((event) => {
@@ -51,7 +52,7 @@ router.get("/:id/edit", (req, res) => {
 });
 
 
-router.get('/:eventId', (req, res, next) => {
+router.get('/:eventId', isLoggedIn, (req, res, next) => {
 const {currentUser} = req.session;
 const currentUserId = currentUser._id;
     const eventId = req.params.eventId;
@@ -67,7 +68,7 @@ const currentUserId = currentUser._id;
     
 })
 
-router.post('/:eventId/delete', (req, res, next) => {
+router.post('/:eventId/delete', isLoggedIn, (req, res, next) => {
     const eventId = req.params.eventId
     Event.findByIdAndDelete(eventId)
         .then(() => { res.redirect('/event/eventCreate') })
@@ -75,7 +76,7 @@ router.post('/:eventId/delete', (req, res, next) => {
 });
 
 //adds loged in user id to the interested property of respective event if unique
-router.post('/:eventId/subscribeUser/:userId', (req, res, next) => {
+router.post('/:eventId/subscribeUser/:userId', isLoggedIn, (req, res, next) => {
     const eventId = req.params.eventId
     const userId = req.params.userId
     Event.findByIdAndUpdate(eventId, {$addToSet:{interested:userId}})
