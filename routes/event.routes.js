@@ -29,6 +29,7 @@ router.get('/eventCreate/:organizerId', isLoggedIn, (req, res, next) => {
 router.post('/eventCreate/:organizerId', isLoggedIn, (req, res, next) => {
     const { date, description, location } = req.body
     const organizerId = req.params.organizerId
+
     Event.create({ date, description, location, organizerName: req.session.currentUser.username, organizer: req.session.currentUser._id })
        .then((event) => {
            res.redirect(`/event/${event._id}`)
@@ -65,10 +66,10 @@ const currentUserId = currentUser._id;
     Event.findById(eventId)
         .then((event) => {
             //we need to take the interested array and get all names of interested users by their Id
-            const  {date, description, location, _id, interested} = event
+            const  {date, description, location, _id, interested, organizerName} = event
             User.find({_id:{$in:interested}}).then((users) => {
                 const usernames = users.map(user => user.username)
-                res.render('event/event', {date, description, location, _id, currentUserId, usernames})
+                res.render('event/event', {date, description, location, _id, currentUserId, usernames, organizerName})
             })
         })
     
