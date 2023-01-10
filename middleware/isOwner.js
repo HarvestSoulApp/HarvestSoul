@@ -4,7 +4,7 @@ module.exports = (req, res, next) => {
   }
   else {
     console.log(`paramsId: ${req.params.id}, currentId: ${req.session.currentUser._id}`)
-    res.send('wrong user')
+    res.redirect('/auth/unauthorized')
   }
 };
 

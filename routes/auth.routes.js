@@ -162,4 +162,9 @@ router.get("/logout", isLoggedIn, (req, res) => {
   });
 });
 
+
+router.get("/unauthorized", (req, res, next) => {
+  res.render("auth/unauthorized")
+});
+
 module.exports = router;
