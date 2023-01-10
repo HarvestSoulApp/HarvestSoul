@@ -1,9 +1,12 @@
 {{>nav}}
 <h1>{{username}}</h1>
 
-<form action="/profile/{{_id}}/edit" method="POST">
+<form action="/profile/{{_id}}/edit" method="POST" enctype="multipart/form-data">
 <input type="text" name="firstName" placeholder="First Name" value="{{firstName}}">
 <input type="text" name="lastName" placeholder ="Last Name" value="{{lastName}}">
+<label>Image:
+          <input type="file" name="imageUrl" />
+        </label>
 <select name ="gender">
     <option value="male">Male</option>
     <option value="female">Female</option>

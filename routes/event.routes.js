@@ -2,6 +2,7 @@ const express = require('express');
 const Event = require('../models/Event.model');
 const User = require('../models/User.model');
 const router = express.Router();
+const fileUploader = require('../config/cloudinary.config');
 
 
 
@@ -27,11 +28,11 @@ router.get('/eventCreate/:organizerId', isLoggedIn, (req, res, next) => {
 })
 
 router.post('/eventCreate/:organizerId', isLoggedIn, (req, res, next) => {
-    const { date, description, location } = req.body
+    const { date, description, location, imageUrl } = req.body
     const organizerId = req.params.organizerId
-
-    Event.create({ date, description, location, organizerName: req.session.currentUser.username, organizer: req.session.currentUser._id })
+    Event.create({ date, description, location, organizerName: req.session.currentUser.username, organizer: req.session.currentUser._id, imageUrl})
        .then((event) => {
+        console.log(`this is ${event.imageUrl}`)
            res.redirect(`/event/${event._id}`)
     })
 })

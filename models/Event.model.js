@@ -12,6 +12,7 @@ const eventSchema = new Schema(
     description: String,
     location: String,
     interested: [String],
+    imageUrl: String
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

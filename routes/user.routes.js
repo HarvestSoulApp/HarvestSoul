@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../models/User.model');
 const Event = require('../models/User.model');
 const router = express.Router();
+const fileUploader = require('../config/cloudinary.config');
 
 
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
@@ -33,20 +34,22 @@ router.get('/:id/edit', isProfileOwner,  isLoggedIn,(req, res, next) => {
     })
 });
 
-router.post('/:id/edit', isProfileOwner, isLoggedIn, (req, res, next) => {
+router.post('/:id/edit', isProfileOwner, isLoggedIn, fileUploader.single('imageUrl'), (req, res, next) => {
     const userId = req.params.id;
-    const { firstName, lastName, gender, dob, starSign, occupation, hobbies, lookingFor } = req.body;
+    const { firstName, lastName, gender, dob, starSign, occupation, hobbies, lookingFor} = req.body;
+   let imageUrl;
+    if(req.file){
+         imageUrl = req.file.path;
+    }
     User.findByIdAndUpdate(userId, 
-        {firstName, lastName, gender, dob, starSign, occupation, hobbies, lookingFor},
+        {firstName, lastName, gender, dob, starSign, occupation, hobbies, lookingFor, imageUrl},
         {new:true} 
         )
         .then((updatedUser) => {
+            console.log(updatedUser)
         res.render('profile/profile', updatedUser)
     })
 })
-
-
-
 
 router.post('/:id/delete', isProfileOwner, isLoggedIn, (req, res, next) => {
     const userId =req.params.id
@@ -55,5 +58,8 @@ router.post('/:id/delete', isProfileOwner, isLoggedIn, (req, res, next) => {
         res.redirect('/auth/logout')
     })
 });
+
+
+
 module.exports = router;
 

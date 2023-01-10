@@ -28,6 +28,7 @@ const userSchema = new Schema(
       occupation: String,
       hobbies: String,
       lookingFor: String,
+      imageUrl: String
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
