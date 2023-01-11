@@ -7,14 +7,7 @@ const isProfileOwner = require("../middleware/isProfileOwner");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  let loggedOut;
-  if (!req.session) {
-    loggedOut = true;
-  }
-  else {
-    loggedOut = false
-  }
-  res.render("index" , loggedOut);
+  res.render("index");
 });
 
 module.exports = router;

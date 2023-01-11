@@ -1,4 +1,4 @@
-<h1>Hello {{username}}</h1>
+<h1>{{username}}</h1>
 
 <div class="container-fluid events">
     <div class="row">
@@ -13,7 +13,7 @@
                     <h1 class="card-body">Gender:{{gender}}</h1>
                     <h1 class="card-body">Star Sign:{{starSign}}</h1>
                     <h1 class="card-body">Hobbies:{{hobbies}}</h1>
-                    <h1 class="card-body">Looking for{{lookingFor}}</h1>
+                    <h1 class="card-body">Looking for:{{lookingFor}}</h1>
                     {{#if comparison}}
                     <a href="/profile/{{_id}}/edit">edit profile</a>
                     <form action="/" method="GET">

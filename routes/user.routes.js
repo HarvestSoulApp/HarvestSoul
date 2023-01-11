@@ -39,7 +39,13 @@ router.get('/:id/edit', isProfileOwner,  isLoggedIn,(req, res, next) => {
 
 router.post('/:id/edit', isProfileOwner, isLoggedIn, fileUploader.single('imageUrl'), (req, res, next) => {
     const userId = req.params.id;
-    const { firstName, lastName, gender, dob, starSign, occupation, hobbies, lookingFor} = req.body;
+    const { dob, occupation, hobbies} = req.body;
+    const firstName = `${req.body.firstName.slice(0, 1).toUpperCase()}${req.body.firstName.slice(1, req.body.firstName.length)}`
+    const lastName = `${req.body.lastName.slice(0, 1).toUpperCase()}${req.body.lastName.slice(1, req.body.lastName.length)}`
+    const starSign = `${req.body.starSign.slice(0, 1).toUpperCase()}${req.body.starSign.slice(1, req.body.starSign.length)}`
+    const lookingFor = `${req.body.lookingFor.slice(0, 1).toUpperCase()}${req.body.lookingFor.slice(1, req.body.lookingFor.length)}`
+    const gender = `${req.body.gender.slice(0, 1).toUpperCase()}${req.body.gender.slice(1, req.body.gender.length)}`
+    console.log(req.body)
    let imageUrl;
     if(req.file){
          imageUrl = req.file.path;

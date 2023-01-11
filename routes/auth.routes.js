@@ -23,7 +23,8 @@ router.get("/signup", isLoggedOut, (req, res) => {
 
 // POST /auth/signup
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, email, password } = req.body;
+  const { email, password } = req.body;
+  let username = `${req.body.username.slice(0,1).toUpperCase()}${req.body.username.slice(1,req.body.username.length)}`
 
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
@@ -44,7 +45,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
   }
 
   //   ! This regular expression checks password for special characters and minimum length
-  /*
+  
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if (!regex.test(password)) {
     res
@@ -54,7 +55,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
     });
     return;
   }
-  */
+  
 
   // Create a new user - start by hashing the password
   bcrypt
@@ -74,7 +75,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
       } else if (error.code === 11000) {
         res.status(500).render("auth/signup", {
           errorMessage:
-            "Username and email need to be unique. Provide a valid username or email.",
+            "An account with the same username and or email address already exists. If you enetered your email correectly and dont already have an account please try a different username. ",
         });
       } else {
         next(error);
@@ -130,20 +131,10 @@ router.post("/login", isLoggedOut, (req, res, next) => {
               .render("auth/login", { errorMessage: "Wrong credentials." });
             return;
           }
-
-          // Add the user object to the session object
           req.session.currentUser = user.toObject();
-          // Remove the password field
           delete req.session.currentUser.password;
-          //res.send(user)
           currentUser = req.session.currentUser;
-          //res.render('profile', currentUser)
-          //res.send(currentUser._id)
-          //const userId = currentUser._id
-          //console.log(`currentUserId: ${req.session.currentUser._id}`)
           res.render('profile/profile', currentUser)
-          //res.send(userId)
-          //res.redirect("/"); //ORIGINAL CODE
         })
         .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
     })
