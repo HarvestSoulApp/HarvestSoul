@@ -7,7 +7,6 @@
                     <h1 class="card-title">{{description}}</h1>
                     <h1 class="card-body">{{location}}</h1>
                     <h1>{{date}}</h1>
-                    <a href="/event/{{_id}}">View Event</a>
                 </div>
             </div>
         </div>
@@ -15,7 +14,7 @@
 </div>
 
 
-
+<img src={{imageUrl}}>
 
 
 <p>{{date}}{{description}}{{location}}</p>
@@ -26,7 +25,7 @@
 <button type="submit">Delete event</button>
 </form>
 
-<a href="/event/{{_id}}/edit">Edit event</a>
+<a href="/event/{{_id}}/eventUpdate">Edit event</a>
 
 
 <form method="POST" action="/event/{{_id}}/subscribeUser/{{currentUserId}}">
