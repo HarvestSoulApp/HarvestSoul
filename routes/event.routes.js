@@ -28,7 +28,8 @@ router.get('/eventCreate/:organizerId', isLoggedIn, (req, res, next) => {
 })
 
 router.post('/eventCreate/:organizerId', isLoggedIn, fileUploader.single('imageUrl'),(req, res, next) => {
-    const { date, description, location } = req.body
+    const {date, description, location } = req.body
+    //date = date.toISOString().split('T')[0] //this formats the date object into string yyyy-mm-dd
     let imageUrl;
     if(req.file){
          imageUrl = req.file.path;
@@ -42,21 +43,20 @@ router.post('/eventCreate/:organizerId', isLoggedIn, fileUploader.single('imageU
 })
 
 
-router.get("/:id/eventUpdate", isLoggedIn, isEventOrganizer, (req, res) => {
+router.get("/:id/eventUpdate", isLoggedIn, (req, res) => {
     const {id} = req.params
     // const organizerName = req.session.currentUser._id
     Event.findById(id)
     .then((event) => {
         const {date, description, location, _id, organizerName, imageUrl } = event
-        const calendarDate = date//.toISOString().split('T')[0] //this formats the date object into string yyyy-mm-dd
-        res.render('event/eventEdit', {calendarDate, description, location, _id, organizerName, imageUrl})
+        res.render('event/eventEdit', {date, description, location, _id, organizerName, imageUrl})
     });
 
 
 });
 
  
-router.post('/:id/eventUpdate', isLoggedIn, isEventOrganizer, fileUploader.single('imageUrl'),(req, res) => {
+router.post('/:id/eventUpdate', isLoggedIn, fileUploader.single('imageUrl'),(req, res) => {
     const { date, description, location } = req.body
     let imageUrl;
     if(req.file){
@@ -89,7 +89,8 @@ const currentUserId = currentUser._id;
     Event.findById(eventId)
         .then((event) => {
             //we need to take the interested array and get all names of interested users by their Id
-            const  {date, description, location, _id, interested, organizerName,imageUrl} = event
+            const { date, description, location, _id, interested, organizerName, imageUrl } = event
+            //const date = event.date.toISOString().split('T')[0] //this formats the date object into string yyyy-mm-dd
             User.find({_id:{$in:interested}}).then((users) => {
                 const usernames = users.map(user => user.username)
                 res.render('event/event', {date, description, location, _id, currentUserId, usernames, organizerName, imageUrl})
