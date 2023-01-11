@@ -21,12 +21,17 @@
 <p>Attendees: {{#each usernames}}{{this}} {{/each}}</p>
 <p>Organizer:{{organizerName}}</p>
 
+
+{{#if comparisonResult}}
 <form action="/event/{{_id}}/delete" method="POST">
 <button type="submit">Delete event</button>
 </form>
 
-<a href="/event/{{_id}}/eventUpdate">Edit event</a>
 
+<form action="/event/{{_id}}/eventUpdate" method="GET">
+<button type="submit">Edit event</button>
+</form>
+{{/if}}
 
 <form method="POST" action="/event/{{_id}}/subscribeUser/{{currentUserId}}">
 <button>Join event</button></form>

@@ -89,11 +89,13 @@ const currentUserId = currentUser._id;
     Event.findById(eventId)
         .then((event) => {
             //we need to take the interested array and get all names of interested users by their Id
+            const comparisonResult = currentUserId === event.organizer._id.toString()
+            console.log(event.organizer._id.toString())
             const { date, description, location, _id, interested, organizerName, imageUrl } = event
             //const date = event.date.toISOString().split('T')[0] //this formats the date object into string yyyy-mm-dd
             User.find({_id:{$in:interested}}).then((users) => {
                 const usernames = users.map(user => user.username)
-                res.render('event/event', {date, description, location, _id, currentUserId, usernames, organizerName, imageUrl})
+                res.render('event/event', {date, description, location, _id, currentUserId, usernames, organizerName, imageUrl, comparisonResult})
             })
         })
     

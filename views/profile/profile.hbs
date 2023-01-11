@@ -15,15 +15,21 @@
                     <h1 class="card-body">Hobbies:{{hobbies}}</h1>
                     <h1 class="card-body">Occupation:{{occupation}}</h1>
                     <h1 class="card-body">Looking for{{lookingFor}}</h1>
+                    {{#if comparison}}
                     <a href="/profile/{{_id}}/edit">edit profile</a>
+                    <form action="/" method="GET">
+                        <button type="submit">Log out</button>
+                    </form>
+                    {{/if}}
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
-
 <a href="/profile/find">see other users</a>
 <a href="/event/find">see events</a>
+
+{{#if comparison}}
 <a href="/event/eventCreate/{{_id}}">add event</a>
+{{/if}}

@@ -22,7 +22,9 @@ router.get('/:id', (req, res, next) => {
     const userId = req.params.id;
     User.findById(userId)  
         .then((user) => {
-     res.render('profile/profile', user)
+            const comparison = userId === req.session.currentUser._id.toString()
+            console.log(userId)
+     res.render('profile/profile', {user, comparison})
  })  
 })
 
