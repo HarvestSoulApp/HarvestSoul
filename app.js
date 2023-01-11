@@ -23,7 +23,7 @@ app.set("view engine", "hbs");
 require("./config")(app);
 
 const capitalize = require("./utils/capitalize");
-const projectName = "harvestSoulAppBackup";
+const projectName = "harvestSoulApp";
 
 app.locals.appTitle = `${capitalize(projectName)}`;
 
