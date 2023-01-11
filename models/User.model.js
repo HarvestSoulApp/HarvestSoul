@@ -25,7 +25,6 @@ const userSchema = new Schema(
       gender: String,
       dob: Date,
       starSign: String,
-      occupation: String,
       hobbies: String,
       lookingFor: String,
       imageUrl: String
