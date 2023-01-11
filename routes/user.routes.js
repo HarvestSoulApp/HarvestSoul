@@ -23,13 +23,14 @@ router.get('/:id', (req, res, next) => {
     User.findById(userId)  
         .then((user) => {
             const comparison = userId === req.session.currentUser._id.toString()
-            console.log(userId)
-     res.render('profile/profile', {user, comparison})
+            console.log(user)
+     res.render('profile/profile', {username: user.username, firstName: user.firstName, gender: user.gender, imageUrl: user.imageUrl, lastName: user.lastName, starSign: user.starSign, dob: user.dob, comparison: comparison, _id: user._id })
  })  
 })
 
 router.get('/:id/edit', isProfileOwner,  isLoggedIn,(req, res, next) => {
     const userId = req.params.id
+    console.log(userId)
     User.findById(userId)
         .then((theUser) => {
             res.render('profile/profileEdit', theUser )    
