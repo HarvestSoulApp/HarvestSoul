@@ -7,6 +7,7 @@
 <label>Image:
           <input type="file" name="imageUrl" />
         </label>
+<label>Gender:
 <select name ="gender">
     <option value="male">Male</option>
     <option value="female">Female</option>
@@ -15,7 +16,10 @@
     <option value="gender-fluid">Gender Fluid</option>
     <option value="non-binary">Non-binary</option>
 </select>
+<label>Date of Birth:
 <input type="date" name="dob" />
+</label>
+<label>Zodiac Sign:
 <select name="starSign">
     <option value="capricorn">Capricorn</option>
     <option value="libra">Libra</option>
@@ -30,12 +34,16 @@
     <option value="gemini">Gemini</option>
     <option value="cancer">Cancer</option>
 </select>
+</label>
+<label>Hobbies:
 <input type="text" name="hobbies" placeholder="Hobbies" value="{{hobbies}}">
 <select name ="lookingFor">
     <option value="relationship">Relationship</option>
     <option value="friendship">Friendship</option>
     <option value="meetingNewPeople">Meeting New People</option>
     <option value="fun">Fun</option>
+    </select>
+    </label>
 <button type="submit">Save Changes</button>
 </form>
 
