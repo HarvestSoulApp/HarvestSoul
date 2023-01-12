@@ -1,3 +1,4 @@
+{{>nav}}
 <h1>{{username}}</h1>
 
 <div class="container-fluid events">
@@ -7,28 +8,16 @@
                 <div class="card-body">
                     <img src={{imageUrl}}>
                     <h1 class="card-title">About Me</h1>
-                    <h1 class="card-body">First Name:{{firstName}}</h1>
-                    <h1 class="card-body">Last Name:{{lastName}}</h1>
-                    <h1 class="card-body">Date of birth:{{dob}}</h1>
-                    <h1 class="card-body">Gender:{{gender}}</h1>
-                    <h1 class="card-body">Star Sign:{{starSign}}</h1>
-                    <h1 class="card-body">Hobbies:{{hobbies}}</h1>
-                    <h1 class="card-body">Looking for:{{lookingFor}}</h1>
-                    {{#if comparison}}
-                    <a href="/profile/{{_id}}/edit">edit profile</a>
-                    <form action="/" method="GET">
-                        <button type="submit">Log out</button>
-                    </form>
-                    {{/if}}
+                    <h1 class="card-body">First Name: {{firstName}}</h1>
+                    <h1 class="card-body">Last Name: {{lastName}}</h1>
+                    <h1 class="card-body">Date of birth: {{dob}}</h1>
+                    <h1 class="card-body">Gender: {{gender}}</h1>
+                    <h1 class="card-body">Star Sign: {{starSign}}</h1>
+                    <h1 class="card-body">Hobbies: {{hobbies}}</h1>
+                    <h1 class="card-body">Looking for: {{lookingFor}}</h1>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<a href="/profile/find">see other users</a>
-<a href="/event/find">see events</a>
-
-{{#if comparison}}
-<a href="/event/eventCreate/{{_id}}">add event</a>
-{{/if}}

@@ -67,7 +67,11 @@ router.post("/signup", isLoggedOut, (req, res) => {
     })
     .then((user) => {
 
-      res.redirect("/auth/login");
+      //automatically log in, when the user creates an account
+      req.session.currentUser = user.toObject();
+      delete req.session.currentUser.password;
+
+      res.redirect(`/profile/${user._id}/edit`)
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -134,7 +138,8 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           req.session.currentUser = user.toObject();
           delete req.session.currentUser.password;
           currentUser = req.session.currentUser;
-          res.render('profile/profile', currentUser)
+          res.redirect(`/profile/${currentUser._id}`)
+          // res.render('profile/profile', currentUser)
         })
         .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
     })

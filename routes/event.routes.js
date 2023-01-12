@@ -28,8 +28,8 @@ router.get('/eventCreate/:organizerId', isLoggedIn, (req, res, next) => {
 })
 
 router.post('/eventCreate/:organizerId', isLoggedIn, fileUploader.single('imageUrl'),(req, res, next) => {
-    const {date, description, location } = req.body
-    //date = date.toISOString().split('T')[0] //this formats the date object into string yyyy-mm-dd
+    const {description, location } = req.body
+    const date = date.toISOString().split('T')[0] //this formats the date object into string yyyy-mm-dd
     let imageUrl;
     if(req.file){
          imageUrl = req.file.path;
@@ -91,8 +91,8 @@ const currentUserId = currentUser._id;
             //we need to take the interested array and get all names of interested users by their Id
             const comparisonResult = currentUserId === event.organizer._id.toString()
             console.log(event.organizer._id.toString())
-            const { date, description, location, _id, interested, organizerName, imageUrl } = event
-            //const date = event.date.toISOString().split('T')[0] //this formats the date object into string yyyy-mm-dd
+            const { description, location, _id, interested, organizerName, imageUrl } = event
+            const date = event.date.toISOString().split('T')[0] //this formats the date object into string yyyy-mm-dd
             User.find({_id:{$in:interested}}).then((users) => {
                 const usernames = users.map(user => user.username)
                 res.render('event/event', {date, description, location, _id, currentUserId, usernames, organizerName, imageUrl, comparisonResult})

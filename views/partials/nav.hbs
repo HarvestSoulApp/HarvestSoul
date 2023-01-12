@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <h1>Welcome to HarvestSoul</h1>
+        <ul class="navbar-nav">
+            {{#if comparison}}
+            <li class="nav-item">
+                <a class="nav-link" href="/profile/{{_id}}/edit">Edit Profile</a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="/event/eventCreate">Add an event</a>
+            </li>
+            {{/if}}
+            <li class="nav-item">
+                <a class="nav-link" href="/profile/find">See other users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/event/find">See events</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Log out</a>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -20,12 +20,17 @@ router.get('/find', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
     const userId = req.params.id;
+
     User.findById(userId)  
         .then((user) => {
-            const comparison = userId === req.session.currentUser._id.toString()
+            const comparison = userId === req.session.currentUser._id
             console.log(user)
-     res.render('profile/profile', {username: user.username, firstName: user.firstName, gender: user.gender, imageUrl: user.imageUrl, lastName: user.lastName, starSign: user.starSign, dob: user.dob, comparison: comparison, _id: user._id })
- })  
+
+            // const dateOfBirth = user.dob.toISOString().split('T')[0];
+           const dateOfBirth = user.dob;
+
+            res.render('profile/profile', {username: user.username, firstName: user.firstName, gender: user.gender, imageUrl: user.imageUrl, lastName: user.lastName, starSign: user.starSign, dob: dateOfBirth, comparison: comparison, _id: user._id })
+        })  
 })
 
 router.get('/:id/edit', isProfileOwner,  isLoggedIn,(req, res, next) => {
