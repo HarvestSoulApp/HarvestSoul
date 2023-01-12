@@ -48,8 +48,8 @@ router.get("/:id/eventUpdate", isLoggedIn, (req, res) => {
     // const organizerName = req.session.currentUser._id
     Event.findById(id)
     .then((event) => {
-        const {date, description, location, _id, organizerName, imageUrl } = event
-        res.render('event/eventEdit', {date, description, location, _id, organizerName, imageUrl})
+        const {date, description, location, _id, imageUrl } = event
+        res.render('event/eventEdit', {date, description, location, _id, imageUrl})
     });
 
 
