@@ -1,0 +1,12 @@
+.profile-image{
+    border-radius:50%;
+    height: 10vw;
+    width: 10vw;
+}
+
+.profile-page{
+    padding: 1vw;
+    background-color: #FFF5EE;
+    width: 50%;
+    border-radius: 50%;
+}
