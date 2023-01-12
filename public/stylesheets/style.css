@@ -5,4 +5,9 @@ body, html{
     width: 100vw;
     background-color:white;
 }
+.profile-log-out{
+    color: #FFF5ee;
+    background-color: red;
+    border-radius: 10vw;
+}
 
