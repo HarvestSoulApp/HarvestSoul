@@ -3,6 +3,7 @@ body, html{
     margin: 0;
     padding: 0;
     width: 100vw;
+    background-color: blue;
 }
 .profile-log-out{
     color: #FFF5ee;
