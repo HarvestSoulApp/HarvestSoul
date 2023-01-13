@@ -16,7 +16,7 @@
       <span class="value">{{#each usernames}}{{this}} {{/each}}</span>
        <span class="field">Organizer: </span>
       <span class="value">{{organizerName}}</span>
-
+</div>
 
       {{#if comparisonResult}}
       <form action="/event/{{_id}}/delete" method="POST">
@@ -30,9 +30,9 @@
       {{/if}}
 
       <form method="POST" action="/event/{{_id}}/subscribeUser/{{currentUserId}}">
-        <button class="log-in">Join</button>
+        <button class="log-in">Join event</button>
       </form>
-    </div>
+    
   </div>
 </div>
 
