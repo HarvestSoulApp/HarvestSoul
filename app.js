@@ -27,6 +27,13 @@ const projectName = "harvestSoulApp";
 
 app.locals.appTitle = `${capitalize(projectName)}`;
 
+app.use((req, res, next) => {
+    app.locals.currentUser = req.session.currentUser
+    console.log(req.session, app.locals)
+    next()
+})
+
+
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
