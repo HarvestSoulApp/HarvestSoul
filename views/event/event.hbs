@@ -4,14 +4,18 @@
   <div class="card">
     <div class="user-header">
       <img class="avatar" src={{imageUrl}}>
-      <h1 {{description}}></h1>
     </div>
     <div class="table">
-
+      <span class="field">Event: </span>
+      <span class="value">{{description}}</span>
+       <span class="field">Date: </span>
       <span class="value">{{date}}</span>
+      <span class="field">Location: </span>
       <span class="value">{{location}}</span>
-      <span class="value">Attendees: {{#each usernames}}{{this}} {{/each}}</span>
-      <span class="value">Organizer:{{organizerName}}</span>
+      <span class="field">Attendees: </span>
+      <span class="value">{{#each usernames}}{{this}} {{/each}}</span>
+       <span class="field">Organizer: </span>
+      <span class="value">{{organizerName}}</span>
 
 
       {{#if comparisonResult}}
@@ -26,7 +30,7 @@
       {{/if}}
 
       <form method="POST" action="/event/{{_id}}/subscribeUser/{{currentUserId}}">
-        <button>Join event</button>
+        <button class="log-in">Join</button>
       </form>
     </div>
   </div>
