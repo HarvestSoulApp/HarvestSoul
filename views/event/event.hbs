@@ -1,16 +1,15 @@
-
 <div class="container-fluid events">
-    <div class="row">
-        <div class="col-12 card">
-            <div class="card product">
-                <div class="card-body">
-                    <h1 class="card-title">{{description}}</h1>
-                    <h1 class="card-body">{{location}}</h1>
-                    <h1>{{date}}</h1>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-12 card">
+      <div class="card product">
+        <div class="card-body">
+          <h1 class="card-title">{{description}}</h1>
+          <h1 class="card-body">{{location}}</h1>
+          <h1>{{date}}</h1>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 
@@ -24,14 +23,15 @@
 
 {{#if comparisonResult}}
 <form action="/event/{{_id}}/delete" method="POST">
-<button type="submit">Delete event</button>
+  <button type="submit">Delete event</button>
 </form>
 
 
 <form action="/event/{{_id}}/eventUpdate" method="GET">
-<button type="submit">Edit event</button>
+  <button type="submit">Edit event</button>
 </form>
 {{/if}}
 
 <form method="POST" action="/event/{{_id}}/subscribeUser/{{currentUserId}}">
-<button>Join event</button></form>
+  <button>Join event</button>
+</form>

@@ -1,24 +1,26 @@
-<div class="profile-page">
 {{>nav}}
-<h1>{{username}}</h1>
-
-<div class="container-fluid events">
-    <div class="row">
-        <div class="col-12 card">
-            <div class="card product">
-                <div class="card-body">
-                    <img class="profile-image" src={{imageUrl}}>
-                    <h1 class="card-title">About Me</h1>
-                    <h3 class="card-body">First Name: {{firstName}}</h3>
-                    <h3 class="card-body">Last Name: {{lastName}}</h3>
-                    <h3 class="card-body">Date of birth: {{dob}}</h3>
-                    <h3 class="card-body">Gender: {{gender}}</h3>
-                    <h3 class="card-body">Star Sign: {{starSign}}</h3>
-                    <h3 class="card-body">Hobbies: {{hobbies}}</h3>
-                    <h3 class="card-body">Looking for: {{lookingFor}}</h3>
-                </div>
-            </div>
-        </div>
+<div class="content">
+  <div class="card">
+    <div class="user-header">
+      <img class="avatar" src={{imageUrl}}>
+      <h1>{{username}}</h1>
     </div>
+    <div class="table">
+      <span class="field">First Name:</span>
+      <span class="value">{{firstName}}</span>
+      <span class="field">Last Name:</span>
+      <span class="value">{{lastName}}</span>
+      <span class="field">Date of birth:</span>
+      <span class="value">{{dob}}</span>
+      <span class="field">Gender:</span>
+      <span class="value">{{gender}}</span>
+      <span class="field">Star Sign:</span>
+      <span class="value">{{starSign}}</span>
+      <span class="field">Hobbies:</span>
+      <span class="value">{{hobbies}}</span>
+      <span class="field">Looking for:</span>
+      <span class="value">{{lookingFor}}</span>
+    </div>
+  </div>
 </div>
-</div>
+

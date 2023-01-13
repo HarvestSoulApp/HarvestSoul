@@ -1,10 +1,16 @@
 {{>nav}}
-<form action="/event/eventCreate" method="POST" enctype="multipart/form-data">
-    <input type="date" name="date" placeholder="date">
-    <input type="text" name="description" placeholder="description">
-    <input type="text" name="location" placeholder="location">
-    <label>Image:
-        <input type="file" name="imageUrl" />
-    </label>
-    <button type="submit">Create event</button>
-</form>
+
+<div class="content">
+  <div class="form-container">
+    <h2 class="heading">Log In</h2>
+    <form class="form" action="/event/eventCreate" method="POST" enctype="multipart/form-data">
+      <input class="input" type="date" name="date" placeholder="date">
+      <input class="input" type="text" name="description" placeholder="description">
+      <input class="input" type="text" name="location" placeholder="location">
+      <label class="label">Image:
+        <input class="label" type="file" name="imageUrl" />
+      </label>
+      <button class="button" type="submit">Create event</button>
+    </form>
+  </div>
+</div>

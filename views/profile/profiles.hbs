@@ -1,18 +1,15 @@
 {{>nav}}
-<div class="container-fluid events">
-    <div class="row">
-{{#each users}}
-        <div class="col-12 col-md-3 card">
-            <div class="card product">
-                <div class="card-body">
-                   <h1 class="card-title">{{this.username}}</h1>
-                   <img  class="profile-thumbnail"src={{this.imageUrl}} >
-                   <a class="card-body" href="/profile/{{this._id}}">See profile</a>
-                </div>
-            </div>
-        </div>
-{{/each}}
-    </div>
+<div class="content">
+  <div class="card-grid">
+    {{#each users}}
+      <a href="/profile/{{this._id}}" class="card">
+        {{#if this.imageUrl}}
+          <img class="avatar" src={{this.imageUrl}}>
+        {{else}}
+          <div class="avatar"></div>
+        {{/if}}
+       <span class="card-title">{{this.username}}</span>
+      </a>
+    {{/each}}
+  </div>
 </div>
-
-

@@ -1,21 +1,12 @@
 {{>nav}}
-<div class="container-fluid events">
-    <div class="row">
-{{#each events}}
-        <div class="col-12 col-md-3 card">
-            <div class="card product">
-                <div class="card-body">
-                    <h1 class="card-title">{{this.description}}</h1>
-                    <h1 class="card-body">{{this.location}}</h1>
-                    <h1>{{this.date}}</h1>
-                    <h1 class="card-body">{{this.organizerName}}</h1>
-                    <a href="/event/{{this._id}}">View Event</a>
-                </div>
-            </div>
-        </div>
-{{/each}}
-    </div>
+<div class="content">
+  <div class="card-grid">
+    {{#each events}}
+      <a href="/event/{{this._id}}" class="card card-vertical">
+       <span class="card-title">{{this.description}}</span>
+       <span>{{this.location}}</span>
+       <span>{{this.organizerName}}</span>
+      </a>
+    {{/each}}
+  </div>
 </div>
-
-
-

@@ -1,3 +1,151 @@
 
   
+.form-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  justify-content: center;
+  align-items: center;
+}
 
+.form {
+  display: flex;
+  width: 100%;
+  max-width: 320px;
+  flex-direction: column;
+  row-gap: 16px;
+}
+.label {
+  width: 100%;
+}
+.input {
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 12px 8px;
+  width: 100%;
+}
+
+.button {
+  background-color: red;
+  color: white;
+  padding: 12px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+}
+.button:hover {
+  opacity: 0.5;
+}
+
+.button-secondary {
+  background-color: white;
+  border: 1px solid red;
+  color: black;
+  padding: 12px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.button:hover {
+  opacity: 0.5;
+}
+
+.button-group {
+  padding-top: 16px;
+  display: flex;
+  column-gap: 16px;
+}
+.text {
+  color: black;
+}
+.link {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+} 
+.link:hover {
+  opacity: 0.5;
+}
+
+.error {
+  color: red;
+}
+.error:before {
+  content: '⚠️';
+  margin-right: 8px;
+}
+
+.content {
+  background-color: rgb(241, 241, 241);
+  display: flex;
+  align-items: center;
+  padding: 32px;
+  flex-direction: column;
+  min-height: calc(100% - 72px);
+}
+.card {
+  background-color: white;
+  box-shadow: 0 2px 2px 2px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  width: 100%;
+  max-width: 320px;
+}
+.user-header {
+  display: flex;
+  column-gap: 16px;
+  align-items: center;
+}
+.avatar {
+  width: 80px;
+  height: 80px;
+  background-color: lightgray;
+  border-radius: 40px;
+  object-fit: cover;
+}
+.table {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  column-gap: 16px; 
+}
+.field {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.card-grid {
+  max-width: 960px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  width: 100%;
+  max-width: 240px;
+  padding: 32px;
+  min-height: 240px;
+  border: 1px solid lightgray;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: black;
+  cursor: pointer;
+}
+.card:hover {
+  opacity: 0.5;
+}
+.card-vertical {
+  flex-direction: column;
+  row-gap: 8px;
+}
+.card-title {
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: capitalize;
+}
